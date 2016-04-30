@@ -8,18 +8,16 @@
     
         <meta name="keywords" content="" />
     
-    <meta name="description" content="Frontend tooling has gotten really complicated and it’s no longer an aspect of your project you can ignore. You really don’t need me to convince you right? Every project demands a level of my attenti">
+    <meta name="description" content="Frontend tooling has gotten really complicated and it’s no longer an aspect of your project you can ignore. You really don’t need me to convince you right? Every project demands a level of my attentio">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Easy Frontend Tooling with Laravel Elixir - Without Laravel!">
 <meta property="og:url" content="http://whatthejs.github.io/2016/04/30/laravel-elixir/index.html">
 <meta property="og:site_name" content="WhatTheJS">
-<meta property="og:description" content="Frontend tooling has gotten really complicated and it’s no longer an aspect of your project you can ignore. You really don’t need me to convince you right? Every project demands a level of my attenti">
-<meta property="og:image" content="http://whatthejs.github.io/css/images/laravel-elixir.png">
-<meta property="og:updated_time" content="2016-04-30T16:20:37.000Z">
+<meta property="og:description" content="Frontend tooling has gotten really complicated and it’s no longer an aspect of your project you can ignore. You really don’t need me to convince you right? Every project demands a level of my attentio">
+<meta property="og:updated_time" content="2016-04-30T20:05:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Easy Frontend Tooling with Laravel Elixir - Without Laravel!">
-<meta name="twitter:description" content="Frontend tooling has gotten really complicated and it’s no longer an aspect of your project you can ignore. You really don’t need me to convince you right? Every project demands a level of my attenti">
-<meta name="twitter:image" content="http://whatthejs.github.io/css/images/laravel-elixir.png">
+<meta name="twitter:description" content="Frontend tooling has gotten really complicated and it’s no longer an aspect of your project you can ignore. You really don’t need me to convince you right? Every project demands a level of my attentio">
     
 
     
@@ -34,8 +32,6 @@
 
     <script src="/vendor/jquery/2.0.3/jquery.min.js"></script>
     
-    
-        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css">
     
     
         <link rel="stylesheet" href="/vendor/scrollLoading/style.css">
@@ -153,8 +149,7 @@
             
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <p><img src="/css/images/laravel-elixir.png"></p>
-<p>Frontend tooling has gotten really complicated and it’s no longer an aspect of your project you can ignore. You really don’t need me to convince you right? Every project demands a level of my attention on things that shouldn’t matter. I just want to build apps! More importantly, so does your team, and they want to do it quickly.</p>
+            <p>Frontend tooling has gotten really complicated and it’s no longer an aspect of your project you can ignore. You really don’t need me to convince you right? Every project demands a level of my attention on things that shouldn’t matter. I just want to build apps! More importantly, so does your team, and they want to do it quickly.</p>
 <p>So, what is Laravel Elixir and how will it get me to building apps faster? First, Laravel itself, as some of you might know, is a PHP MVC framework. It has a lot of great features but Laravel also comes with Elixir, which the <a href="https://laravel.com/docs/5.2/elixir#introduction" target="_blank" rel="external">documentation</a> explains:</p>
 <blockquote>
 <p>Laravel Elixir provides a clean, fluent API for defining basic Gulp tasks for your Laravel application. Elixir supports several common CSS and JavaScript pre-processors, and even testing tools. Using method chaining, Elixir allows you to fluently define your asset pipeline.</p>
@@ -169,6 +164,10 @@
 <h3 id="Make-sure-you-have-a-public-folder"><a href="#Make-sure-you-have-a-public-folder" class="headerlink" title="Make sure you have a public folder:"></a>Make sure you have a public folder:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir public</span><br></pre></td></tr></table></figure>
 <h3 id="Prepare-your-gulp-file"><a href="#Prepare-your-gulp-file" class="headerlink" title="Prepare your gulp file:"></a>Prepare your gulp file:</h3><p>Besides compiling Sass, Elixir ships with <em>many</em> other tasks including one for compiling Javascript with Browserify. So, let’s create a file for compiling both Sass and Javascript:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> elixir = <span class="built_in">require</span>(<span class="string">'laravel-elixir'</span>);</span><br><span class="line"></span><br><span class="line">elixir(<span class="function"><span class="keyword">function</span>(<span class="params">mix</span>) </span>&#123;</span><br><span class="line">  mix.sass(<span class="string">'app.sass'</span>);</span><br><span class="line">  mix.browserify(<span class="string">'main.js'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Look how wonderfully clean that is! What if you don’t like the default choice for file locations? Well with Elixir, configuring paths is straight-forward.</p>
+<p>Let’s say I wanted to have all my source files (sass, jsx, etc) in a different folder, one called <code>src</code> (instead of <code>resources/assets</code>)? I also wanted those files to be compiled to a folder called <code>build</code> (instead of <code>public</code>)? Easy!</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> elixir = <span class="built_in">require</span>(<span class="string">'laravel-elixir'</span>);</span><br><span class="line"></span><br><span class="line">elixir.config.assetsPath = <span class="string">'src'</span>;</span><br><span class="line">elixir.config.publicPath = <span class="string">'build'</span>;</span><br><span class="line"></span><br><span class="line">elixir(<span class="function"><span class="keyword">function</span>(<span class="params">mix</span>) </span>&#123;</span><br><span class="line">  mix.sass(<span class="string">'app.sass'</span>);</span><br><span class="line">  mix.browserify(<span class="string">'main.js'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>And there you have it. Elixir ships with many other tasks like <code>browsersync</code>, <code>coffeescript</code>, file versioning/cache busting, copying files and folders, and more. Note, that when you need to ship your assets to production, just run gulp with the production flag - which minifies/uglifies your assets: <code>gulp --production</code>. Sweet! Head over to Elixir’s <a href="https://laravel.com/docs/5.2/elixir#introduction" target="_blank" rel="external">documentation</a> to get a ton more detail.</p>
 
         </div>
         <footer class="article-footer">
@@ -176,7 +175,7 @@
 
 
 
-    <a data-url="http://whatthejs.github.io/2016/04/30/laravel-elixir/" data-id="cinnjz3nc0000wgv9ibh8p8sl" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://whatthejs.github.io/2016/04/30/laravel-elixir/" data-id="cinnk8qsn0000xwv9xfxkc1de" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -294,7 +293,7 @@
                             <a href="/2016/04/30/laravel-elixir/" class="thumbnail">
     
     
-        <span style="background-image:url(/css/images/laravel-elixir.png)" alt="Easy Frontend Tooling with Laravel Elixir - Without Laravel!" class="thumbnail-image"></span>
+        <span class="thumbnail-image thumbnail-none"></span>
     
     
 </a>
@@ -394,8 +393,6 @@
 
 
 
-    
-        <script src="/vendor/fancybox/jquery.fancybox.pack.js"></script>
     
 
     
