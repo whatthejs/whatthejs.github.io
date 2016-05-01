@@ -3,22 +3,21 @@
 <head>
     <meta charset="utf-8">
     
-    <title>About | WhatTheJS</title>
+    <title>How to Understand Application State | WhatTheJS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="Phoenix, AZ
-I’ve been doing web development for about 15 years. I’m currently Senior UI Architect for Investability.com, an online search and acquisition platform transforming the way in which investo">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About">
-<meta property="og:url" content="http://whatthejs.github.io/about/index.html">
+        <meta name="keywords" content="" />
+    
+    <meta name="description" content="State is a concept most people have a hard time explaining. Like all things it all depends on the context. A frequently used definition, when talking about it as part of a React application, is that s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Understand Application State">
+<meta property="og:url" content="http://whatthejs.github.io/2016/04/30/How-to-Understand-Application-State/index.html">
 <meta property="og:site_name" content="WhatTheJS">
-<meta property="og:description" content="Phoenix, AZ
-I’ve been doing web development for about 15 years. I’m currently Senior UI Architect for Investability.com, an online search and acquisition platform transforming the way in which investo">
-<meta property="og:updated_time" content="2016-04-30T23:16:43.000Z">
+<meta property="og:description" content="State is a concept most people have a hard time explaining. Like all things it all depends on the context. A frequently used definition, when talking about it as part of a React application, is that s">
+<meta property="og:updated_time" content="2016-05-01T00:33:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About">
-<meta name="twitter:description" content="Phoenix, AZ
-I’ve been doing web development for about 15 years. I’m currently Senior UI Architect for Investability.com, an online search and acquisition platform transforming the way in which investo">
+<meta name="twitter:title" content="How to Understand Application State">
+<meta name="twitter:description" content="State is a concept most people have a hard time explaining. Like all things it all depends on the context. A frequently used definition, when talking about it as part of a React application, is that s">
 <meta name="twitter:creator" content="@_whatthejs">
     
 
@@ -127,51 +126,42 @@ I’ve been doing web development for about 15 years. I’m currently Senior UI 
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em class="page-title-link" data-url="/about/index.html">About</em>
+    <a class="page-title-link" href="/categories/React/">React</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="page-undefined" class="article article-single article-type-page" itemscope itemprop="blogPost">
+                            <article id="post-How-to-Understand-Application-State" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        About
+        How to Understand Application State
         </h1>
     
 
             </header>
         
         <div class="article-subtitle">
-            <a href="/about/index.html" class="article-date">
-    <time datetime="2016-04-30T20:38:08.000Z" itemprop="datePublished">2016-04-30</time>
+            <a href="/2016/04/30/How-to-Understand-Application-State/" class="article-date">
+    <time datetime="2016-04-30T23:21:55.000Z" itemprop="datePublished">2016-04-30</time>
 </a>
             
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <p><em>Phoenix, AZ</em></p>
-<p>I’ve been doing web development for about 15 years. I’m currently Senior UI Architect for Investability.com, an online search and acquisition platform transforming the way in which investors from around the globe acquire Real Estate in the U.S.</p>
-<p>I’m currently building up my consultancy and training business (<a href="http://www.whatthecode.com" target="_blank" rel="external">WhatTheCode?</a>), providing expertise to many startups and where I am now teaching junior and intermediate developers. Courses I’m currently teaching:</p>
-<ul>
-<li>Javascript Fundamentals<ul>
-<li>Event delegation</li>
-<li>Making code more modular</li>
-<li>Understanding closures and javascript internals</li>
-<li>Demystifying jQuery</li>
-</ul>
-</li>
-<li>ReactJS Basics<ul>
-<li>Preparing your local environment and tooling</li>
-<li>Comparing/contrasting ReactJS with other frameworks; Understanding trade-offs</li>
-<li>Understanding what app state is and how to represent it in a ReactJS app</li>
-<li>Pure functions as components</li>
-<li>Data persistence</li>
-</ul>
-</li>
-</ul>
-<p>My courses are conducted over Skype but I’m open to whatever suits your needs. <a href="mailto:colyn@whatthecode.com" target="_blank" rel="external">Contact me</a> for rates.</p>
+            <p>State is a concept most people have a hard time explaining. Like all things it all depends on the context. A frequently used definition, when talking about it as part of a React application, is that state is “data that changes over time”. This definition doesn’t make it all that clear what state is. I think “state” is actually more abstract than that. I would go further and say that it’s not <em>data</em> that changes over time but the <em>user interface</em> - the visible representation of your application - that changes over time. The <em>data</em> is just one method for describing those visible changes.</p>
+<p>Let’s look at it another way. Imagine you’re a UX designer and it was your responsibility to design a new application for your company. Before any code is written, the first few stages of design involve you creating wireframes, then finally on to high fidelity mockups. It’s your responsibility to anticipate how the user will interact with the application and to make sure that all those interactions are spec’d out into mockups <em>before</em> any code or data structures ever cross anyone’s mind. In effect, what you are already doing is describing the <em>state</em> of the application with every step the user takes getting through it, using individual screenshots. As we will see, for the developer who will be developing the application, especially in React, this will prove to be very insightful.</p>
+<p>Before the developer writes a single line of code; before they write any data structures at all, the first thing she should be doing is analyzing each of your screens. She will look at them then write down the <em>differences</em> between them. Those differences are what she will use to help her decide how to best represent the state as data structures. In a React application those differences, as defined in the new data structures, are what they mean by “data changing over time”.</p>
+<p>Let’s take a more concrete example. Imagine you’re the developer this time and your designer gave you two screenshots for an application. One is just a website homepage with some marketing copy. The other is the same page but with a login modal. Describing the differences is quite easy:</p>
+<ol>
+<li>On the first screen the modal is not open</li>
+<li>On the second screen the modal is open (caused by a button click)</li>
+</ol>
+<p>There are no other changes to the UI; the marketing copy didn’t change; navigation links didn’t change. The fact that the modal is either open or not open, can be described in data very easily:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// default state</span></span><br><span class="line"><span class="keyword">var</span> state = &#123;</span><br><span class="line">  modalIsOpen: <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br><span class="line">...</span><br><span class="line"><span class="comment">// for the sake of simplicity, a login button is clicked and runs this function:</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleClick</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  state.modalIsOpen = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(Note: the above is pseudo-code in case it’s not obvious)</p>
+<p>This is the beauty of React. As a React developer, your primary responsibility is to describe your application in data only. Your designer worries about what your application will look like during different state transitions. In the above example, your only job is to set <code>modalIsOpen</code> to true or false. Then React takes care of all the messy work of getting the DOM updated with any new HTML your application needs to represent the new state.</p>
 
         </div>
         <footer class="article-footer">
@@ -274,6 +264,19 @@ I’ve been doing web development for about 15 years. I’m currently Senior UI 
         </ul>
     </div>
     
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2016/04/30/laravel-elixir/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Easy Frontend Tooling with Laravel Elixir - Without Laravel!</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
     <div class="widgets-container">
         
             
@@ -375,7 +378,7 @@ I’ve been doing web development for about 15 years. I’m currently Senior UI 
     var disqus_shortname = 'whatthejs';
     
     
-    var disqus_url = 'http://whatthejs.github.io/about/index.html';
+    var disqus_url = 'http://whatthejs.github.io/2016/04/30/How-to-Understand-Application-State/';
     
     (function() {
     var dsq = document.createElement('script');
